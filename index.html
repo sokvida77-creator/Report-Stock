@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Veng Sreng Center - Reports</title>
+    <style>
+        body {
+            font-family: 'Khmer OS Battambang', 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f7f5;
+            margin: 0;
+            padding: 20px 10px;
+            color: #2b2b2b;
+        }
+
+        .no-print-zone {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .btn-print {
+            background-color: #005a36;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 14px;
+            font-family: 'Khmer OS Battambang', Arial, sans-serif;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: 0.2s;
+        }
+        .btn-print:hover {
+            background-color: #004026;
+        }
+
+        .page {
+            width: 100%;
+            max-width: 210mm;
+            background-color: #ffffff;
+            margin: 0 auto 40px auto;
+            padding: 20px 30px;
+            box-sizing: border-box;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+            border-radius: 4px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .header h1 {
+            color: #005a36;
+            font-size: 20px;
+            margin: 0 0 4px 0;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+        .header h2 {
+            font-size: 13px;
+            color: #444;
+            margin: 0;
+            text-transform: uppercase;
+            font-weight: 600;
+            border-bottom: 2px solid #005a36;
+            display: inline-block;
+            padding-bottom: 2px;
+        }
+        
+        .meta-table, .main-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .meta-table td {
+            border: 1px solid #a3b8ac;
+            padding: 5px 10px;
+            font-size: 11px;
+            text-align: left;
+        }
+        .meta-label {
+            background-color: #f8faf9;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .section-title {
+            background-color: #005a36 !important;
+            color: #ffffff !important;
+            font-weight: bold;
+            font-size: 11px;
+            padding: 5px !important;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .main-table th {
+            border: 1px solid #a3b8ac;
+            background-color: #eaefe9;
+            color: #2b2b2b;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 5px 2px;
+        }
+        .main-table td {
+            border: 1px solid #b2c2b9;
+            padding: 0;
+            font-size: 11px;
+            height: 24px;
+        }
+        .text-left-cell {
+            text-align: left;
+            padding-left: 6px !important;
+        }
+
+        input[type="text"], input[type="number"], input[type="date"], select {
+            width: 100%;
+            height: 100%;
+            border: none;
+            padding: 2px 4px;
+            box-sizing: border-box;
+            font-family: 'Khmer OS Battambang', Arial, sans-serif;
+            font-size: 11px;
+            background: transparent;
+            outline: none;
+            text-align: center;
+        }
+        input[type="date"] {
+            text-align: left;
+            cursor: pointer;
+        }
+        select {
+            text-align-last: center;
+            cursor: pointer;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        input[type="text"]:focus, input[type="number"]:focus, input[type="date"]:focus, select:focus {
+            background-color: #eef7f2;
+        }
+        .main-table td.text-left-cell input {
+            text-align: left;
+        }
+        
+        .main-table tbody tr:nth-child(even) {
+            background-color: #fcfdfe;
+        }
+
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 10mm 15mm 10mm 15mm;
+            }
+            body { 
+                background-color: #fff; 
+                padding: 0; 
+                margin: 0;
+            }
+            .no-print-zone { display: none; }
+            .page { 
+                box-shadow: none; 
+                padding: 0; 
+                width: 100%; 
+                margin: 0 0 20mm 0;
+                page-break-after: always;
+                page-break-inside: avoid;
+            }
+            .main-table td {
+                height: 22px;
+                font-size: 10px;
+            }
+            .main-table th {
+                padding: 4px 2px;
+                font-size: 10px;
+            }
+            input[type="text"], input[type="number"], input[type="date"], select {
+                font-size: 10px;
+                background: transparent !important;
+                -webkit-appearance: none;
+                appearance: none;
+            }
+            input[type="date"]::-webkit-calendar-picker-indicator {
+                display: none;
+                -webkit-appearance: none;
+            }
+            .section-title {
+                background-color: #005a36 !important;
+                color: #ffffff !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .main-table th {
+                background-color: #eaefe9 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="no-print-zone">
+        <button class="btn-print" onclick="window.print()">🖨️ ចុចទីនេះដើម្បីព្រីន ឬរក្សាទុកជា PDF</button>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <h1>AMAZON VENG SRENG CENTER</h1>
+            <h2>Daily Stock Report</h2>
+        </div>
+
+        <table class="meta-table">
+            <tr>
+                <td class="meta-label" style="width: 12%;">Shift:</td>
+                <td style="width: 33%;"><input type="text"></td>
+                <td class="meta-label" style="width: 25%;">Internal Exchange Riel/USD:</td>
+                <td style="width: 30%; font-weight: bold; color: #c0392b; padding-left:12px;">4100 KHR = 1$</td>
+            </tr>
+            <tr>
+                <td class="meta-label">Date:</td>
+                <td><input type="date"></td>
+                <td class="meta-label">Cashier/Prepared By:</td>
+                <td><input type="text"></td>
+            </tr>
+        </table>
+
+        <table class="main-table">
+            <thead>
+                <tr>
+                    <th style="width: 5%;">No.</th>
+                    <th style="width: 15%;">Category</th>
+                    <th style="width: 12%;">Product Code</th>
+                    <th style="width: 28%;">Product Name</th>
+                    <th style="width: 6%;">Size</th>
+                    <th style="width: 9%;">Beginning</th>
+                    <th style="width: 9%;">Received</th>
+                    <th style="width: 8%;">Count</th>
+                    <th style="width: 8%;">Usage</th>
+                    <th style="width: 8%;">Return/Broken</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td rowspan="8" style="font-weight: bold; background: #fafafa; color: #005a36;">Raw Materials</td><td>1001036</td><td class="text-left-cell">Dao Arabica Blend</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                <tr><td>2</td><td>1000199</td><td class="text-left-cell">Green Tea Flavoring Product</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                <tr><td>3</td><td>1000208</td><td class="text-left-cell">Amazon Green Tea Leaf</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                <tr><td>4</td><td>1002733</td><td class="text-left-cell">Amazon Cocoa Powder (no sugar)</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                <tr><td>5</td><td>1000197</td><td class="text-left-cell">Cream Flavoring Product</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                <tr><td>6</td><td>1004688</td><td class="text-left-cell">Amazon Caramel Syrup</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                <tr><td>7</td><td>1004701</td><td class="text-left-cell">Café Amazon Sweetened Condense</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                <tr><td>8</td><td>1003424</td><td class="text-left-cell">Amazon Evaporate Milk</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                
+                <tr><td>9</td><td style="font-weight: bold; background: #fafafa; color: #005a36;">Milk</td><td>1002141</td><td class="text-left-cell">Kirisu Farm Fresh Milk 2L</td><td>BOT</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                
+                <tr><td>10</td><td rowspan="2" style="font-weight: bold; background: #fafafa; color: #005a36;">Beverages</td><td>1004663</td><td class="text-left-cell">Café Amazon Mineral water</td><td>BTL</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                <tr><td>11</td><td>1004010</td><td class="text-left-cell">Clod Brew Coffee Bottle 800ml</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                
+                <tr><td>12</td><td rowspan="9" style="font-weight: bold; background: #fafafa; color: #005a36;">PREMIUMS</td><td>1007262</td><td class="text-left-cell">Amazon X Lock N Lock Tumbler</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                <tr><td>13</td><td>1007123</td><td class="text-left-cell">Amazon Ordinary Stainless Tumbler</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                <tr><td>14</td><td>1006773</td><td class="text-left-cell">2 in 1 Plastic Tumbler</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                <tr><td>15</td><td>1005745</td><td class="text-left-cell">Mask AMZ x Naraya Black</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                <tr><td>16</td><td>1006071</td><td class="text-left-cell">Mask AMZ x Naraya Forest</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                <tr><td>17</td><td>1006112</td><td class="text-left-cell">TC Canvas for AMZ Cups</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                <tr><td>18</td><td>1005528</td><td class="text-left-cell">Eco Bag AMZ x Naraya</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                <tr><td>19</td><td>1004891</td><td class="text-left-cell">Singnture Menu keychain</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                <tr><td>20</td><td>1005614</td><td class="text-left-cell">Capsule Machine (Green)</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                
+                <tr><td>21</td><td rowspan="7" style="font-weight: bold; background: #fafafa; color: #005a36;">PET CUP</td><td>1006235</td><td class="text-left-cell">Double wall paper cup (12oz)</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                <tr><td>22</td><td>1004938</td><td class="text-left-cell">Double wall paper cup (8oz)</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                <tr><td>23</td><td>1004937</td><td class="text-left-cell">Pet Cup + S_Lid (16oz)</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                <tr><td>24</td><td>1003673</td><td class="text-left-cell">Pet Cup + D_Lid (16oz)</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                <tr><td>25</td><td>1004863</td><td class="text-left-cell">Amazon Bio Cup 4oz</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                <tr><td>26</td><td>1000101</td><td class="text-left-cell">Pet Cup + D_Lid (22oz)</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+                <tr><td>27</td><td>1002566</td><td class="text-left-cell">Pet Cup + S_Lid (22oz)</td><td>PC</td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td><td><input type="number"></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <h1>AMAZON VENG SRENG CENTER</h1>
+            <h2>Daily Sale Report</h2>
+        </div>
+
+        <table class="meta-table">
+            <tr>
+                <td class="meta-label" style="width: 12%;">Shift:</td>
+                <td style="width: 33%;"><input type="text"></td>
+                <td class="meta-label" style="width: 25%;">Internal Exchange Riel/USD:</td>
+                <td style="width: 30%; font-weight: bold; color: #c0392b; padding-left:12px;">4100 KHR = 1$</td>
+            </tr>
+            <tr>
+                <td class="meta-label">Date:</td>
+                <td><input type="date"></td>
+                <td class="meta-label">Cashier/Prepared By:</td>
+                <td><input type="text"></td>
+            </tr>
+        </table>
+
+        <table class="main-table">
+            <thead>
+                <tr>
+                    <th colspan="10" class="section-title">SALE CASH</th>
+                </tr>
+                <tr>
+                    <th>POS</th><th>KHR</th><th>USD</th><th>ABA QR</th><th>ABA Card</th><th>Panda</th><th>NHAM 24</th><th>WOWNOW</th><th>E-GetS</th><th>Grab Food</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="main-table">
+            <thead>
+                <tr>
+                    <th colspan="5" class="section-title">RECORD FROM DELIVERY</th>
+                </tr>
+                <tr>
+                    <th style="width: 8%;">No.</th>
+                    <th style="width: 32%;">Delivery APP</th>
+                    <th style="width: 25%;">Order No.</th>
+                    <th style="width: 15%;">QTY</th>
+                    <th style="width: 20%;">Total Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><select><option value=""></option><option value="Panda">Panda</option><option value="NHAM 24">NHAM 24</option><option value="WOWNOW">WOWNOW</option><option value="E-GetS">E-GetS</option><option value="Grab Food">Grab Food</option></select></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+                <tr><td>2</td><td><select><option value=""></option><option value="Panda">Panda</option><option value="NHAM 24">NHAM 24</option><option value="WOWNOW">WOWNOW</option><option value="E-GetS">E-GetS</option><option value="Grab Food">Grab Food</option></select></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+                <tr><td>3</td><td><select><option value=""></option><option value="Panda">Panda</option><option value="NHAM 24">NHAM 24</option><option value="WOWNOW">WOWNOW</option><option value="E-GetS">E-GetS</option><option value="Grab Food">Grab Food</option></select></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+                <tr><td>4</td><td><select><option value=""></option><option value="Panda">Panda</option><option value="NHAM 24">NHAM 24</option><option value="WOWNOW">WOWNOW</option><option value="E-GetS">E-GetS</option><option value="Grab Food">Grab Food</option></select></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+                <tr><td>5</td><td><select><option value=""></option><option value="Panda">Panda</option><option value="NHAM 24">NHAM 24</option><option value="WOWNOW">WOWNOW</option><option value="E-GetS">E-GetS</option><option value="Grab Food">Grab Food</option></select></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+                <tr><td>6</td><td><select><option value=""></option><option value="Panda">Panda</option><option value="NHAM 24">NHAM 24</option><option value="WOWNOW">WOWNOW</option><option value="E-GetS">E-GetS</option><option value="Grab Food">Grab Food</option></select></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+                <tr><td>7</td><td><select><option value=""></option><option value="Panda">Panda</option><option value="NHAM 24">NHAM 24</option><option value="WOWNOW">WOWNOW</option><option value="E-GetS">E-GetS</option><option value="Grab Food">Grab Food</option></select></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+                <tr><td>8</td><td><select><option value=""></option><option value="Panda">Panda</option><option value="NHAM 24">NHAM 24</option><option value="WOWNOW">WOWNOW</option><option value="E-GetS">E-GetS</option><option value="Grab Food">Grab Food</option></select></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+                <tr><td>9</td><td><select><option value=""></option><option value="Panda">Panda</option><option value="NHAM 24">NHAM 24</option><option value="WOWNOW">WOWNOW</option><option value="E-GetS">E-GetS</option><option value="Grab Food">Grab Food</option></select></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+                <tr><td>10</td><td><select><option value=""></option><option value="Panda">Panda</option><option value="NHAM 24">NHAM 24</option><option value="WOWNOW">WOWNOW</option><option value="E-GetS">E-GetS</option><option value="Grab Food">Grab Food</option></select></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+                <tr><td>11</td><td><select><option value=""></option><option value="Panda">Panda</option><option value="NHAM 24">NHAM 24</option><option value="WOWNOW">WOWNOW</option><option value="E-GetS">E-GetS</option><option value="Grab Food">Grab Food</option></select></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+                <tr><td>12</td><td><select><option value=""></option><option value="Panda">Panda</option><option value="NHAM 24">NHAM 24</option><option value="WOWNOW">WOWNOW</option><option value="E-GetS">E-GetS</option><option value="Grab Food">Grab Food</option></select></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+                <tr><td>13</td><td><select><option value=""></option><option value="Panda">Panda</option><option value="NHAM 24">NHAM 24</option><option value="WOWNOW">WOWNOW</option><option value="E-GetS">E-GetS</option><option value="Grab Food">Grab Food</option></select></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+                <tr><td>14</td><td><select><option value=""></option><option value="Panda">Panda</option><option value="NHAM 24">NHAM 24</option><option value="WOWNOW">WOWNOW</option><option value="E-GetS">E-GetS</option><option value="Grab Food">Grab Food</option></select></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+                <tr><td>15</td><td><select><option value=""></option><option value="Panda">Panda</option><option value="NHAM 24">NHAM 24</option><option value="WOWNOW">WOWNOW</option><option value="E-GetS">E-GetS</option><option value="Grab Food">Grab Food</option></select></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+                <tr><td>16</td><td><select><option value=""></option><option value="Panda">Panda</option><option value="NHAM 24">NHAM 24</option><option value="WOWNOW">WOWNOW</option><option value="E-GetS">E-GetS</option><option value="Grab Food">Grab Food</option></select></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+                <tr><td>17</td><td><select><option value=""></option><option value="Panda">Panda</option><option value="NHAM 24">NHAM 24</option><option value="WOWNOW">WOWNOW</option><option value="E-GetS">E-GetS</option><option value="Grab Food">Grab Food</option></select></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+                <tr><td>18</td><td><select><option value=""></option><option value="Panda">Panda</option><option value="NHAM 24">NHAM 24</option><option value="WOWNOW">WOWNOW</option><option value="E-GetS">E-GetS</option><option value="Grab Food">Grab Food</option></select></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+                <tr><td>19</td><td><select><option value=""></option><option value="Panda">Panda</option><option value="NHAM 24">NHAM 24</option><option value="WOWNOW">WOWNOW</option><option value="E-GetS">E-GetS</option><option value="Grab Food">Grab Food</option></select></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+                <tr><td>20</td><td><select><option value=""></option><option value="Panda">Panda</option><option value="NHAM 24">NHAM 24</option><option value="WOWNOW">WOWNOW</option><option value="E-GetS">E-GetS</option><option value="Grab Food">Grab Food</option></select></td><td><input type="text"></td><td><input type="number"></td><td><input type="text"></td></tr>
+            </tbody>
+        </table>
+
+        <table class="main-table">
+            <thead>
+                <tr>
+                    <th colspan="6" class="section-title">STAFF DRINKS RECORD</th>
+                </tr>
+                <tr>
+                    <th style="width: 8%;">No.</th>
+                    <th style="width: 24%;">ឈ្មោះបុគ្គលិក</th>
+                    <th style="width: 24%;">ឈ្មោះភេសជ្ជៈ</th>
+                    <th style="width: 12%;">កែវថ្មី</th>
+                    <th style="width: 12%;">កែវផ្ទាល់ខ្លួន</th>
+                    <th style="width: 20%;">Remark</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                <tr><td>2</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                <tr><td>3</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
